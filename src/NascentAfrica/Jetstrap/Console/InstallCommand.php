@@ -44,6 +44,14 @@ class InstallCommand extends Command
         copy(__DIR__.'/../../../../stubs/webpack.config.js', base_path('webpack.config.js'));
 
         // Fix Errors Vite...
+        if ((new Filesystem)->exists(base_path('postcss.config.js'))) {
+            (new Filesystem)->delete(base_path('postcss.config.js'));
+        }
+
+        if ((new Filesystem)->exists(base_path('vite.config.js'))) {
+            (new Filesystem)->delete(base_path('vite.config.js'));
+        }
+        
         copy(__DIR__.'/../../../../postcss.config.js', base_path('postcss.config.js'));
         copy(__DIR__.'/../../../../vite.config.js', base_path('vite.config.js'));
 
